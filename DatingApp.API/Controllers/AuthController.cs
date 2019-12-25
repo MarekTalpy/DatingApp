@@ -51,10 +51,14 @@ namespace DatingApp.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserToLoginDto userToLoginDto)
         {
+            Console.WriteLine($"userToLoginDto: {userToLoginDto}");
             var userToLogin = await _repo.Login(
                 userToLoginDto.Username.ToLower(),
                 userToLoginDto.Password
             );
+
+            Console.WriteLine($"userToLogin: {userToLogin}");
+
 
             if (userToLogin == null)
                 return Unauthorized();
@@ -79,6 +83,8 @@ namespace DatingApp.API.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            Console.WriteLine($"OK: {token}");
 
             return Ok(new { token = tokenHandler.WriteToken(token) });
         }

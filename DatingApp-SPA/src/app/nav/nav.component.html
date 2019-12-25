@@ -1,0 +1,8 @@
+<nav>
+  <form *ngIf="!loggedIn()" class="nav" #loginForm="ngForm">
+    <input class="nav__input" name="username" required [(ngModel)]="model.username">
+    <input class="nav__input" name="password" required type="password" [(ngModel)]="model.password">
+    <button [disabled]="!loginForm.valid" (click)="onLogin()">Login</button>
+  </form>
+  <button *ngIf="loggedIn()" (click)="onLogout()">Log Out</button>
+</nav>

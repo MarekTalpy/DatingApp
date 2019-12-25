@@ -1,0 +1,8 @@
+<section class="home">
+  <h1>Welcome {{ authService.decodedToken?.unique_name | titlecase }}</h1>
+  <div *ngIf="!isRegisterMode">
+    <button (click)="onRegister()">Register</button>
+    <button>Info</button>
+  </div>
+  <app-register *ngIf="isRegisterMode" (cancelClicked)="onCancelClicked()"></app-register>
+</section>

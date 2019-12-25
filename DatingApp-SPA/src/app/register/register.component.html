@@ -1,0 +1,5 @@
+<form #registerForm="ngForm">
+  <input name="username" required [(ngModel)]="model.username">
+  <input name="password" required [(ngModel)]="model.password">
+  <button (click)="onRegister(); onCancel()" [disabled]="!registerForm.valid">Register</button>
+</form>
